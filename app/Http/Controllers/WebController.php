@@ -66,12 +66,13 @@ class WebController extends Controller
                 $ipr = "not found";
                 if ($ipl) {
                     foreach ($ipl as $ip) {
-                        if ($ip !== '127.0.0.1') {
+                        $ipexplode = explode('.', $ip)[0];
+
+                        if ($ipexplode !== '127' && $ipexplode !== '0') {
                             array_push($data['ip'][$hostr], $ip);
-                            // $data['ip'] = $ip;
                             exec("ping -c 1 " . $ip, $output, $status);
                             $ipr = str_replace('.', '-', $ip);
-                            if ($status == 0) {
+                            if ($status === 0) {
                                 $data['status'][$hostr] = 'active';
                                 if (!empty($request['startport']) && !empty($request['endport'])) {
 
@@ -162,21 +163,24 @@ class WebController extends Controller
                 $host = trim($host);
                 $replace = ['http://', 'https://', 'www.', '/', ':', '\n'];
                 $host = str_replace($replace, '', $host);
+
                 if (!empty($host)) {
                     array_push($data['hostname'], $host);
                     $ipl = gethostbynamel($host);
+
                     $hostr = str_replace('.', '-', $host);
                     $data['status'][$hostr] = array();
                     $data['ip'][$hostr] = array();
                     $ipr = "not found";
                     if ($ipl) {
                         foreach ($ipl as $ip) {
-                            if ($ip !== '127.0.0.1') {
+                            $ipexplode = explode('.', $ip)[0];
+
+                            if ($ipexplode !== '127' && $ipexplode !== '0') {
                                 array_push($data['ip'][$hostr], $ip);
-                                // $data['ip'] = $ip;
                                 exec("ping -c 1 " . $ip, $output, $status);
                                 $ipr = str_replace('.', '-', $ip);
-                                if ($status == 0) {
+                                if ($status === 0) {
                                     $data['status'][$hostr] = 'active';
                                     if (!empty($request['startport']) && !empty($request['endport'])) {
 

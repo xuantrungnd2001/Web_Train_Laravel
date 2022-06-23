@@ -17,7 +17,6 @@ class UserController extends Controller
     public function index()
     {
         //
-
         $data = User::get();
         return view('user.index', ['data' => $data]);
     }

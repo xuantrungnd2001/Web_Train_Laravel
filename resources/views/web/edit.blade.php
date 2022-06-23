@@ -32,12 +32,12 @@
                                     <div class="form-group">
                                         <label for="startport">Start port</label>
                                         <input name="startport" type="number" id="startport"
-                                            class="form-control" placeholder="start-end: 0-1000" >
+                                            class="form-control" placeholder="1-65535" >
                                     </div>
                                     <div class="form-group">
                                         <label for="endport">End port</label>
                                         <input name="endport" type="number" id="endport"
-                                            class="form-control" placeholder="start-end: 0-1000" >
+                                            class="form-control" placeholder="1-65535" >
                                     </div>
                                     <div class="fallback">
                                         <input name="file" type="file" />
