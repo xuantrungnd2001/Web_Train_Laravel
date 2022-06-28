@@ -49,6 +49,7 @@ class UserController extends Controller
             session()->flash('status', 'success');
         else
             session()->flash('status', 'error');
+
         return redirect()->route('user.create');
     }
 
@@ -97,8 +98,6 @@ class UserController extends Controller
                 session()->flash('status', 'error');
                 return redirect()->route('user.edit', ['user' => $user]);
             }
-
-
             $data['password'] = bcrypt($data['password']);
             $user->update($data);
             session()->flash('status', 'success');

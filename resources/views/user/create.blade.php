@@ -8,11 +8,11 @@
             <div class="page-title-box">
                 <h4 class="page-title">Thêm sinh viên</h4>
             </div>
-            @if (session('status')=='success')
+            @if (session('status')==='success')
             <div class="alert alert-success" role="alert">
                 <i class="dripicons-checkmark mr-2"></i> Tạo taì khoản <strong>thành công</strong>
             </div>
-            @elseif (session('status')=='error')
+            @elseif (session('status')==='error'||$errors->any())
             <div class="alert alert-danger" role="alert">
                 <i class="dripicons-wrong mr-2"></i> Tạo tài khoản <strong>thất bại</strong>
             </div>

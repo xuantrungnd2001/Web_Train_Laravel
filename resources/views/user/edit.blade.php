@@ -8,11 +8,11 @@
             <div class="page-title-box">
                 <h4 class="page-title">Thay đổi thông tin người dùng</h4>
             </div>
-            @if (session('status')=='success')
+            @if (session('status')==='success')
             <div class="alert alert-success" role="alert">
             <i class="dripicons-checkmark mr-2"></i> Cập nhật taì khoản <strong>thành công</strong>
             </div>
-            @elseif (session('status')=='error')
+            @elseif (session('status')==='error'||$errors->any())
             <div class="alert alert-danger" role="alert">
             <i class="dripicons-wrong mr-2"></i> Cập nhật tài khoản <strong>thất bại</strong>
             </div>
@@ -41,7 +41,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Số điện thoại</label>
-                                            <input name="phone" value="{{session('user')->phone}}" type="text"
+                                            <input name="phone" value="{{$user->phone}}" type="text"
                                                 class="form-control" placeholder="Số điện thoại">
                                         </div>
                                     </div>
@@ -49,7 +49,7 @@
                                 <div class="row">
                         
                                     <div class="col-md-6">
-                                        @if (session('user')->role == 'user')
+                                        @if (session('user')->role === 'user')
                                         <div class="form-group">
                                             <label>Mật khẩu cũ</label>
                                             <input name="old_password" type="password" class="form-control" placeholder="Mật khẩu">
@@ -77,7 +77,7 @@
                                 <div class="text-right">
                                     <button name="update" type="submit" class="btn btn-success mt-2"><i class="mdi mdi-content-save"></i>
                                         Lưu</button>
-                                        @if (session('user')->role == 'admin')
+                                        @if (session('user')->role === 'admin')
                                         <a href="{{route('user.delete',$user)}}" class="btn btn-danger mt-2"><i
                                             class="mdi mdi-delete"></i>Xóa</a>
                                         
