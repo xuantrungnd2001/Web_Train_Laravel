@@ -35,7 +35,7 @@
                                         <td>
                                             {{$ip}}</small>
                                         </td>
-                                        @if ($web['status'][$hostnamer] == 'active')
+                                        @if ($web['status'][$hostnamer] === 'active')
                                         <td>
                                             <h5><span class="badge badge-success-lighten">Active</span></h5>
                                         </td>
